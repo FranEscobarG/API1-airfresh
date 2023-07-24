@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getAllUserController = exports.createUserController = exports.getAllUseCase = exports.createUserUseCase = exports.mysqlUserRepository = void 0;
+const CreateUserUseCase_1 = require("../application/CreateUserUseCase");
+const GetAllUserUseCase_1 = require("../application/GetAllUserUseCase");
+const CreateUserController_1 = require("./controllers/CreateUserController");
+const GetAllUserController_1 = require("./controllers/GetAllUserController");
+const MysqlUserRepository_1 = require("./MysqlUserRepository");
+exports.mysqlUserRepository = new MysqlUserRepository_1.MysqlUserRepository();
+exports.createUserUseCase = new CreateUserUseCase_1.CreateUserUseCase(exports.mysqlUserRepository);
+exports.getAllUseCase = new GetAllUserUseCase_1.GetAllUserUseCase(exports.mysqlUserRepository);
+exports.createUserController = new CreateUserController_1.CreateUserController(exports.createUserUseCase);
+exports.getAllUserController = new GetAllUserController_1.GetAllUserController(exports.getAllUseCase);
